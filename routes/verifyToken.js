@@ -27,14 +27,4 @@ const verifyTokenAndAuth = (req, res, next) => {
   });
 };
 
-const verifyTokenAndAdmin = (req, res, next) => {
-  verifyToken(req, res, () => {
-    if (req.user.isAdmin) {
-      next();
-    } else {
-      res.status(403).json("You are not allowed to access this route");
-    }
-  });
-};
-
-module.exports = { verifyToken, verifyTokenAndAuth, verifyTokenAndAdmin };
+module.exports = { verifyToken, verifyTokenAndAuth };
